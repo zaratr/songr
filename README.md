@@ -1,5 +1,5 @@
-# Songr
-## Feature- add a set of Albums to Database server
-- expected time: 2 hours
-- actual time: 4 hours
-- uses test to run code.
+# Songr App
+## Feature - Create a App that can add Albums
+- Time taken: 1 hour
+- Actual Time: 4 hours
+- has a test using gradle and Database using thymeleaf.
