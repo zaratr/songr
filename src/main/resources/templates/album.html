@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymelear.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Album list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Albums: </h1>
+    <div>
+        <ul th:each="album : ${albums}">
+            <li th:text="${album.title}"></li>
+            <li th:text="${album.artist}"></li>
+            <li th:text="${album.songCount}"></li>
+            <li th:text="${album.length}"></li>
+            <li th:text="${album.imgUrl}"></li>
+            <p><a th:src="${'/viewAlbum/' + album.title}"> Check me out!</a>
+        </ul>
+    </div>
+
+</div>
+<form action="/addAlbum" method="post">
+    <fieldset>
+        <legend>Adding Album</legend>
+        <label for="title">Album title</label>
+        <input type="text" name="title">
+        <label for="artist">Album title</label>
+        <input type="text" name="artist">
+        <label for="songCount">Album song count</label>
+        <input type="number" name="songCount">
+        <label for="length">Album song Album</label>
+        <input type="number" name="length">
+        <label for="imgurl">Album image</label>
+        <input type="text" name="imgurl">
+        <input type="submit" value="Add me">
+    </fieldset>
+</form>
+</body>
+</html>

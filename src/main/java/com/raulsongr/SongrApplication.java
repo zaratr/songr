@@ -1,13 +1,14 @@
-package com.raulsongr.demo;
+package com.raulsongr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class SongrApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(SongrApplication.class, args);
+
 	}
 
 }
