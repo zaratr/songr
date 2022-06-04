@@ -4,9 +4,7 @@ import com.raulsongr.model.Album;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 //import com.raulsongr.repositories.*;
@@ -37,5 +35,30 @@ public class AlbumController {
         return new RedirectView("/");
     }
 
+    @GetMapping("/view-album/{title}")
+    public String viewAlbumW(@PathVariable String title, Model mdl)
+    {
+        Album albumToView = songrRepository.findByTitle(title);
+        mdl.addAttribute("album", albumToView);
+        mdl.addAttribute("songs", albumToView.getSongsofAlbum());
+        return "view-album.html";
+    }
+    @PutMapping("/edit-album")
+    public RedirectView viewAlbum(long id, String title, String artist, int songCount, int length, String imgUrl){
+        Album albumToEdit = songrRepository.getReferenceById(id);
+        albumToEdit.setTitle(title);
+        albumToEdit.setArtist(artist);
+        albumToEdit.setSongCount(songCount);
+        albumToEdit.setLength(length);
+        albumToEdit.setImgUrl(imgUrl);
+        return new RedirectView("/");
+    }
 
+
+    @DeleteMapping("/delete-album")
+    public RedirectView deleteAlbum(long id)
+    {
+        songrRepository.deleteById(id);
+        return new RedirectView("/");
+    }
 }
