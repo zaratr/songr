@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymelear.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs in Album</title>
+</head>
+<body>
+<form action="/edit-album"> th:method="put">
+    <input type="hidden" name="id" th:value="${album.id}">
+
+    <label for="title"> Album title </label>
+    <input type="text" name="title" th:value="${album.title}">
+
+    <label for="artist"> Album Artist </label>
+    <input type="text" name="author" th:value="${album.author}">
+
+    <label for="length"> Album length </label>
+    <input type="number" name="length" th:value="${album.length}">
+
+    <label for="songCount"> Album Artist </label>
+    <input type="number" name="songCount" th:value="${album.songCount}">
+
+    <label for="imgUrl"> Image Url </label>
+    <input type="text" name="imgUrl" th:value="${album.imgUrl}">
+
+    <input type="sumbit" value="Edit Album">
+</form>
+<div>
+    <form action="/delete-album" th:method="delete">
+        <input type="hidden" name="id" th:value="${album}">
+        <input type="submit" value="Delete album">
+    </form>
+</div>
+
+
+<form action="/add-song"> th:method="post">
+    <input type="hidden" name="id" th:value="${album.id}">
+
+    <label for="title"> song title </label>
+    <input type="text" name="title" th:value="${album.title}">
+
+    <label for="length"> song length </label>
+    <input type="number" name="length" th:value="${album.length}">
+
+    <label for="trackNumber"> track number </label>
+    <input type="number" name="trackNumber" th:value="${album.trackNumber}">
+
+
+    <input type="sumbit" value="add song">
+</form>
+
+<div>
+    <ul th:each="song : ${songs}">
+        <li th:text="${song.title}"></li>
+        <li th:text="${album.length}"></li>
+        <li th:text="${song.trackNumber}"></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

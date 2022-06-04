@@ -1,5 +1,6 @@
 package com.raulsongr.model;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -13,6 +14,9 @@ public class Album {
     private int songCount;
     private int length;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    List<Song> songsofAlbum;
 
     public Album()
     {
@@ -56,6 +60,10 @@ public class Album {
         this.title = title;
     }
 
+    public void setSongsofAlbum(List<Song> songsofAlbum) {
+        this.songsofAlbum = songsofAlbum;
+    }
+
     //getters
     public int getLength() {
         return length;
@@ -75,5 +83,9 @@ public class Album {
 
     public String getTitle() {
         return title;
+    }
+
+    public List<Song> getSongsofAlbum() {
+        return songsofAlbum;
     }
 }
